@@ -78,7 +78,7 @@ Ikuti langkah ini untuk menjalankan aplikasi di lingkungan lokal Anda.
 
 1.  **Clone Repository**
     ```bash
-    git clone https://github.com/username/gembok-lara.git
+    git clone https://github.com/rizkylab/gembok-lara.git
     cd gembok-lara
     ```
 
@@ -135,15 +135,66 @@ Gunakan kredensial berikut untuk masuk ke sistem:
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Cara Kontribusi
 
-Proyek ini dikembangkan sebagai porting dari sistem legacy. Kontribusi untuk fitur baru atau perbaikan bug sangat diterima.
+Kami sangat menghargai kontribusi Anda untuk pengembangan GEMBOK LARA. Berikut adalah panduan untuk berkontribusi:
 
-1.  Fork repository ini.
-2.  Buat branch fitur (`git checkout -b fitur-baru`).
-3.  Commit perubahan (`git commit -m 'Menambah fitur X'`).
-4.  Push ke branch (`git push origin fitur-baru`).
-5.  Buat Pull Request.
+1.  **Fork Repository**
+    Klik tombol "Fork" di pojok kanan atas halaman repository ini untuk menyalin proyek ke akun GitHub Anda.
+
+2.  **Clone Repository**
+    Clone repository yang sudah Anda fork ke komputer lokal Anda:
+    ```bash
+    git clone https://github.com/rizkylab/gembok-lara.git
+    ```
+
+3.  **Buat Branch Baru**
+    Selalu buat branch baru untuk setiap fitur atau perbaikan bug yang Anda kerjakan:
+    ```bash
+    git checkout -b fitur-baru-anda
+    ```
+
+4.  **Lakukan Perubahan**
+    Lakukan coding sesuai standar Laravel dan pastikan kode Anda bersih.
+
+5.  **Commit Perubahan**
+    Gunakan pesan commit yang deskriptif:
+    ```bash
+    git commit -m "Menambahkan fitur X: deskripsi singkat"
+    ```
+
+6.  **Push ke GitHub**
+    Push branch Anda ke repository fork Anda:
+    ```bash
+    git push origin fitur-baru-anda
+    ```
+
+7.  **Buat Pull Request (PR)**
+    Buka halaman repository asli dan buat Pull Request dari branch Anda. Jelaskan perubahan yang Anda lakukan secara detail.
+
+---
+
+## 💬 Dukungan
+
+Jika Anda mengalami masalah atau memiliki pertanyaan seputar penggunaan GEMBOK LARA, silakan:
+
+*   **Buat Issue**: Laporkan bug atau request fitur melalui tab [Issues](https://github.com/rizkylab/gembok-lara/issues) di GitHub.
+*   **Diskusi**: Bergabunglah dalam diskusi komunitas (jika tersedia) atau hubungi pengembang utama.
+
+---
+
+## 📄 License
+
+Proyek ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, memodifikasi, dan mendistribusikan ulang proyek ini sesuai dengan ketentuan lisensi. Lihat file `LICENSE` untuk detail lebih lanjut.
+
+---
+
+## 🔗 Referensi
+
+Proyek ini dibangun sebagai referensi dan pengembangan modern dari proyek open-source:
+**[Gembok Bill](https://github.com/alijayanet/gembok-bill)** oleh Ali Jaya Net.
+
+Kami mengucapkan terima kasih kepada pengembang asli atas inspirasi dan fondasi logika bisnis yang telah dibangun.
 
 ---
 
