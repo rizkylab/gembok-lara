@@ -20,7 +20,7 @@
                     <a href="{{ route('admin.vouchers.pricing') }}" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
                         <i class="fas fa-tags mr-2"></i>Pricing
                     </a>
-                    <a href="{{ route('admin.vouchers.generate') }}" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition shadow-lg">
+                    <a href="{{ route('admin.vouchers.generate') }}" class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition shadow-lg">
                         <i class="fas fa-magic mr-2"></i>Generate
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                             <p class="text-sm text-gray-500 mb-1">Vouchers Sold</p>
                             <h3 class="text-2xl font-bold text-gray-900">{{ number_format($stats['total_vouchers']) }}</h3>
                         </div>
-                        <div class="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                        <div class="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center text-cyan-600">
                             <i class="fas fa-ticket-alt text-xl"></i>
                         </div>
                     </div>

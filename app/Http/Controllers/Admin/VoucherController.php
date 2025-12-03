@@ -10,8 +10,9 @@ class VoucherController extends Controller
     public function index()
     {
         $stats = [
-            'total_sales' => \App\Models\VoucherPurchase::where('status', 'success')->sum('price'),
+            'total_sales' => \App\Models\VoucherPurchase::where('status', 'completed')->sum('amount'),
             'total_vouchers' => \App\Models\VoucherPurchase::count(),
+            'pending_vouchers' => \App\Models\VoucherPurchase::where('status', 'pending')->count(),
             'active_pricing' => \App\Models\VoucherPricing::where('is_active', true)->count(),
         ];
 
@@ -52,7 +53,14 @@ class VoucherController extends Controller
         $query = \App\Models\VoucherPurchase::query();
 
         if ($request->filled('search')) {
-            $query->where('phone_number', 'like', "%{$request->search}%");
+            $query->where(function($q) use ($request) {
+                $q->where('customer_phone', 'like', "%{$request->search}%")
+                  ->orWhere('customer_name', 'like', "%{$request->search}%");
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
         }
 
         $purchases = $query->latest()->paginate(20);

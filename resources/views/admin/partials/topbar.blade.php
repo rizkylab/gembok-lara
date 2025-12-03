@@ -10,7 +10,7 @@
                 <p class="text-sm font-medium text-gray-900">{{ auth()->user()->name }}</p>
                 <p class="text-xs text-gray-500">Administrator</p>
             </div>
-            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
             </div>
         </div>

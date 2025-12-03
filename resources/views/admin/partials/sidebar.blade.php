@@ -1,14 +1,14 @@
 <!-- Sidebar -->
-<div class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-blue-900 to-purple-900 transform transition-transform duration-300 ease-in-out lg:translate-x-0" 
+<div class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-slate-900 via-blue-900 to-cyan-900 transform transition-transform duration-300 ease-in-out lg:translate-x-0" 
      :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
     
     <!-- Logo -->
-    <div class="flex items-center justify-center h-16 bg-black bg-opacity-20">
-        <div class="flex items-center space-x-2">
-            <div class="h-10 w-10 bg-white rounded-lg flex items-center justify-center">
-                <i class="fas fa-network-wired text-blue-600"></i>
+    <div class="flex items-center justify-center h-16 bg-black bg-opacity-30 border-b border-cyan-500/20">
+        <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+                <i class="fas fa-network-wired text-white"></i>
             </div>
-            <span class="text-white font-bold text-xl">GEMBOK LARA</span>
+            <span class="text-white font-bold text-xl tracking-wide">GEMBOK LARA</span>
         </div>
     </div>
 

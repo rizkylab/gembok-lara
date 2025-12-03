@@ -68,7 +68,7 @@
                             <a href="{{ route('admin.vouchers.index') }}" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
                                 <i class="fas fa-times mr-2"></i>Cancel
                             </a>
-                            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg">
+                            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg">
                                 <i class="fas fa-magic mr-2"></i>Generate Vouchers
                             </button>
                         </div>

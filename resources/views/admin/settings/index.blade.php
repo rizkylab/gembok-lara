@@ -62,7 +62,7 @@
                     <!-- System Configuration -->
                     <div class="bg-white rounded-xl shadow-md p-6">
                         <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                            <i class="fas fa-cogs text-purple-600 mr-2"></i>System Configuration
+                            <i class="fas fa-cogs text-cyan-600 mr-2"></i>System Configuration
                         </h2>
                         <div class="space-y-4">
                             <div>
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg font-bold">
+                    <button type="submit" class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg font-bold">
                         <i class="fas fa-save mr-2"></i>Save Settings
                     </button>
                 </div>

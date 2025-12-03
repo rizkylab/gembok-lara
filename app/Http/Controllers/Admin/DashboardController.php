@@ -20,19 +20,59 @@ class DashboardController extends Controller
             'total_technicians' => \App\Models\Technician::count(),
             'total_collectors' => \App\Models\Collector::count(),
             'total_agents' => \App\Models\Agent::count(),
+            'total_odps' => \App\Models\Odp::count(),
         ];
 
         $recent_invoices = \App\Models\Invoice::with(['customer', 'package'])
             ->latest()
-            ->limit(10)
+            ->limit(5)
             ->get();
 
         $recent_customers = \App\Models\Customer::with('package')
             ->latest()
-            ->limit(10)
+            ->limit(5)
             ->get();
 
-        return view('admin.dashboard', compact('stats', 'recent_invoices', 'recent_customers'));
+        // Revenue chart data (last 6 months)
+        $revenueData = [];
+        $months = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $months[] = $date->format('M Y');
+            $revenueData[] = \App\Models\Invoice::where('status', 'paid')
+                ->whereYear('paid_date', $date->year)
+                ->whereMonth('paid_date', $date->month)
+                ->sum('amount');
+        }
+
+        // Customer growth chart (last 6 months)
+        $customerGrowth = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $customerGrowth[] = \App\Models\Customer::whereYear('join_date', $date->year)
+                ->whereMonth('join_date', $date->month)
+                ->count();
+        }
+
+        // Package distribution
+        $packageStats = \App\Models\Package::withCount('customers')->get();
+
+        // Invoice status distribution
+        $invoiceStats = [
+            'paid' => \App\Models\Invoice::where('status', 'paid')->count(),
+            'unpaid' => \App\Models\Invoice::where('status', 'unpaid')->count(),
+        ];
+
+        return view('admin.dashboard', compact(
+            'stats', 
+            'recent_invoices', 
+            'recent_customers',
+            'revenueData',
+            'customerGrowth',
+            'months',
+            'packageStats',
+            'invoiceStats'
+        ));
     }
 
     public function login(Request $request)

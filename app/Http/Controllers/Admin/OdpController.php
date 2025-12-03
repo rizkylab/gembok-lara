@@ -16,13 +16,24 @@ class OdpController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('code', 'like', "%{$search}%")
-                  ->orWhere('location_name', 'like', "%{$search}%");
+                  ->orWhere('address', 'like', "%{$search}%");
             });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
         }
 
         $odps = $query->latest()->paginate(20);
 
-        return view('admin.network.odps.index', compact('odps'));
+        $stats = [
+            'total' => \App\Models\Odp::count(),
+            'active' => \App\Models\Odp::where('status', 'active')->count(),
+            'full' => \App\Models\Odp::where('status', 'full')->count(),
+            'maintenance' => \App\Models\Odp::where('status', 'maintenance')->count(),
+        ];
+
+        return view('admin.network.odps.index', compact('odps', 'stats'));
     }
 
     public function create()
@@ -35,14 +46,16 @@ class OdpController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:50|unique:odps,code',
-            'location_name' => 'nullable|string|max:255',
-            'latitude' => 'nullable|numeric|between:-90,90',
-            'longitude' => 'nullable|numeric|between:-180,180',
+            'address' => 'nullable|string',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
             'capacity' => 'required|integer|min:1',
             'status' => 'required|in:active,maintenance,full',
+            'installation_date' => 'nullable|date',
+            'notes' => 'nullable|string',
         ]);
 
-        $validated['available_ports'] = $validated['capacity'];
+        $validated['used_ports'] = 0;
 
         \App\Models\Odp::create($validated);
 
@@ -65,22 +78,18 @@ class OdpController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:50|unique:odps,code,' . $odp->id,
-            'location_name' => 'nullable|string|max:255',
-            'latitude' => 'nullable|numeric|between:-90,90',
-            'longitude' => 'nullable|numeric|between:-180,180',
+            'address' => 'nullable|string',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
             'capacity' => 'required|integer|min:1',
             'status' => 'required|in:active,maintenance,full',
+            'installation_date' => 'nullable|date',
+            'notes' => 'nullable|string',
         ]);
-
-        // Adjust available ports if capacity changes
-        if ($validated['capacity'] != $odp->capacity) {
-            $diff = $validated['capacity'] - $odp->capacity;
-            $validated['available_ports'] = $odp->available_ports + $diff;
-        }
 
         $odp->update($validated);
 
-        return redirect()->route('admin.network.odps.index')
+        return redirect()->route('admin.network.odps.show', $odp)
             ->with('success', 'ODP updated successfully!');
     }
 

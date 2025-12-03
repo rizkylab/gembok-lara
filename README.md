@@ -3,113 +3,215 @@
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)
+![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?style=for-the-badge&logo=chartdotjs)
 
-**GEMBOK LARA** adalah sistem manajemen tagihan dan operasional ISP (Internet Service Provider) yang dibangun ulang menggunakan **Laravel 12**. Proyek ini merupakan porting modern dari aplikasi Node.js "Gembok Bill", dirancang untuk skalabilitas, keamanan, dan kemudahan penggunaan.
-
----
-
-## 🚀 Fitur Utama
-
-Aplikasi ini mencakup seluruh siklus bisnis ISP, dari manajemen pelanggan hingga infrastruktur jaringan.
-
-### 👥 Manajemen Pelanggan (CRM)
-- **Database Terpusat**: Simpan data lengkap pelanggan, paket langganan, dan riwayat.
-- **Status Tracking**: Monitor status pelanggan (Active, Inactive, Suspended).
-- **Billing History**: Riwayat tagihan dan pembayaran yang transparan.
-
-### 💰 Sistem Billing & Invoice
-- **Auto-Invoicing**: Generate tagihan bulanan secara otomatis.
-- **Invoice Management**: Buat, edit, hapus, dan cetak invoice profesional.
-- **Payment Tracking**: Pelacakan status pembayaran (Paid/Unpaid) dengan tanggal bayar.
-- **Revenue Stats**: Dashboard statistik pendapatan real-time.
-
-### 📦 Manajemen Paket Internet
-- **Flexible Pricing**: Buat paket dengan harga, kecepatan, dan deskripsi custom.
-- **Tax Configuration**: Dukungan pengaturan PPN otomatis.
-- **PPPoE Integration**: Mapping profil paket ke profil PPPoE Mikrotik (Placeholder).
-
-### 🎫 Sistem Voucher (Hotspot)
-- **Voucher Generator**: Generate ribuan voucher sekaligus dengan prefix custom.
-- **Pricing Tiers**: Harga berbeda untuk Customer vs Reseller/Agen.
-- **Sales Tracking**: Laporan penjualan voucher harian/bulanan.
-- **Agent Portal**: Portal khusus agen untuk topup saldo dan beli voucher (Coming Soon).
-
-### 🛠️ Manajemen Staff & Operasional
-- **Teknisi**: Pelacakan area coverage dan penugasan teknisi.
-- **Kolektor**: Manajemen kolektor lapangan dengan sistem komisi.
-- **Agen**: Manajemen saldo deposit agen dan riwayat transaksi.
-
-### 🌐 Manajemen Jaringan (ODP)
-- **ODP Mapping**: Database Optical Distribution Point dengan koordinat GPS.
-- **Capacity Planning**: Visualisasi kapasitas port (Terpakai vs Tersedia).
-- **Status Monitoring**: Monitor status ODP (Active, Maintenance, Full).
-
-### ⚙️ Pengaturan Sistem
-- **Company Profile**: Kustomisasi nama, alamat, dan logo perusahaan pada invoice.
-- **Integrasi Payment**: Konfigurasi Midtrans Gateway (Sandbox/Production).
-- **WhatsApp Gateway**: Konfigurasi API untuk notifikasi otomatis.
+**GEMBOK LARA** adalah sistem manajemen tagihan dan operasional ISP (Internet Service Provider) yang dibangun menggunakan **Laravel 12**. Sistem ini dirancang dengan antarmuka modern, analitik mendalam, dan fitur lengkap untuk mengelola bisnis ISP Anda.
 
 ---
 
-## 🔒 Keamanan (Security)
+## � Screenshots
 
-GEMBOK LARA dibangun dengan standar keamanan Laravel yang ketat:
+<div align="center">
+  <img src="img/login.png" alt="Login Page" width="45%">
+  <img src="img/dashboard.png" alt="Dashboard" width="45%">
+  <img src="img/customers.png" alt="Customer Management" width="45%">
+  <img src="img/network-map.png" alt="Network Map" width="45%">
+</div>
 
-1.  **Authentication**: Menggunakan sistem autentikasi session-based yang aman dengan hashing password **Bcrypt**.
-2.  **CSRF Protection**: Semua form dilindungi dari serangan Cross-Site Request Forgery.
-3.  **SQL Injection Protection**: Menggunakan Eloquent ORM yang secara otomatis mem-binding parameter query.
-4.  **XSS Protection**: Blade templating engine otomatis meng-escape output untuk mencegah Cross-Site Scripting.
-5.  **Role-Based Access Control (RBAC)**: Struktur database siap untuk implementasi multi-role (Admin, Teknisi, Kolektor, Pelanggan).
-6.  **Input Validation**: Validasi ketat pada setiap input form menggunakan Form Requests.
+> **Note**: Screenshot aplikasi tersedia di folder `img/`
 
 ---
 
-## 🛠️ Instalasi & Setup
+## ✨ Fitur Lengkap
 
-Ikuti langkah ini untuk menjalankan aplikasi di lingkungan lokal Anda.
+### 🎨 **Modern UI/UX**
+- **Theme ISP Network**: Desain modern dengan warna cyan & biru yang profesional
+- **Responsive Design**: Tampilan optimal di desktop, tablet, dan mobile
+- **Dark Sidebar**: Sidebar dengan gradient elegan dan navigasi intuitif
+- **Interactive Charts**: Grafik analitik menggunakan Chart.js
+- **Smooth Animations**: Transisi dan hover effects yang halus
+
+### 📊 **Dashboard Analytics**
+- **Real-time Statistics**: 
+  - Total Customers & Active Status
+  - Total Revenue & Pending Revenue
+  - Package Distribution
+  - Invoice Status
+- **Interactive Charts**:
+  - Revenue Trend (6 bulan terakhir)
+  - Customer Growth Chart
+  - Package Distribution (Doughnut Chart)
+  - Invoice Status (Pie Chart)
+- **Recent Activity**: Invoice dan customer terbaru
+- **Quick Actions**: Akses cepat ke fitur utama
+
+### 👥 **Customer Management**
+- **CRUD Lengkap**: Create, Read, Update, Delete customer
+- **Customer Profile**: Detail lengkap dengan statistik
+- **Package Assignment**: Assign paket internet ke customer
+- **Status Management**: Active, Inactive, Suspended
+- **Search & Filter**: Pencarian dan filter berdasarkan status/paket
+- **Invoice History**: Riwayat tagihan per customer
+
+### 💰 **Invoice & Billing**
+- **Auto Invoice Generation**: Generate invoice otomatis
+- **Invoice Management**: Create, edit, view, print invoice
+- **Payment Tracking**: Status paid/unpaid dengan tanggal bayar
+- **Invoice Filtering**: Filter berdasarkan status, customer, tanggal
+- **Professional Print**: Template invoice untuk print
+- **Revenue Analytics**: Statistik pendapatan real-time
+
+### 📦 **Package Management**
+- **Flexible Packages**: Buat paket dengan harga dan kecepatan custom
+- **Package Statistics**: Jumlah subscriber per paket
+- **Tax Configuration**: Pengaturan pajak per paket
+- **PPPoE Profile**: Mapping ke profil Mikrotik
+- **Active/Inactive Status**: Kontrol paket yang ditampilkan
+
+### 🎫 **Voucher System**
+- **Voucher Purchase**: Sistem pembelian voucher online
+- **Pricing Management**: Harga customer vs agen
+- **Generation Settings**: Konfigurasi format voucher
+- **Online Settings**: Durasi dan profil voucher
+- **Delivery Logs**: Tracking pengiriman voucher
+- **Sales Analytics**: Statistik penjualan voucher
+
+### 🌐 **Network Management**
+- **ODP Management**: Database Optical Distribution Point
+- **Interactive Map**: Peta jaringan dengan Leaflet.js
+- **Capacity Monitoring**: Visualisasi port usage
+- **GPS Coordinates**: Lokasi ODP dengan koordinat
+- **Status Tracking**: Active, Maintenance, Full
+- **Cable Routes**: Manajemen rute kabel per customer
+- **ONU Devices**: Database perangkat ONU
+- **Network Segments**: Manajemen segmen jaringan
+- **Maintenance Logs**: Riwayat maintenance infrastruktur
+
+### 👨‍💼 **Agent System**
+- **Agent Management**: CRUD agen penjualan
+- **Balance System**: Manajemen saldo deposit agen
+- **Transaction History**: Riwayat transaksi lengkap
+- **Balance Requests**: Sistem request topup saldo
+- **Voucher Sales**: Tracking penjualan voucher per agen
+- **Commission System**: Perhitungan komisi otomatis
+- **Monthly Payments**: Pembayaran bulanan via agen
+- **Notifications**: Sistem notifikasi untuk agen
+
+### 🛠️ **Staff Management**
+- **Technicians**: Manajemen teknisi lapangan
+- **Collectors**: Manajemen kolektor pembayaran
+- **Area Coverage**: Pembagian area kerja
+- **Performance Tracking**: Monitoring kinerja staff
+
+### ⚙️ **System Settings**
+- **Company Profile**: Konfigurasi data perusahaan
+- **Payment Gateway**: Integrasi Midtrans/Xendit
+- **WhatsApp Gateway**: Notifikasi otomatis via WA
+- **Email Configuration**: Setup SMTP untuk email
+- **System Preferences**: Pengaturan umum sistem
+
+---
+
+## 🗄️ **Database Seeders**
+
+Sistem dilengkapi dengan 23 seeder lengkap untuk data dummy:
+
+### Core Data
+- `UserSeeder` - Admin dan staff users
+- `AppSettingSeeder` - Konfigurasi aplikasi
+- `PackageSeeder` - Paket internet (10-100 Mbps)
+- `VoucherPricingSeeder` - Harga voucher
+
+### Staff & Agents
+- `TechnicianSeeder` - Data teknisi
+- `CollectorSeeder` - Data kolektor
+- `AgentSeeder` - Data agen (3 agen)
+- `AgentBalanceSeeder` - Saldo agen
+- `AgentTransactionSeeder` - Transaksi agen
+- `AgentBalanceRequestSeeder` - Request saldo
+- `AgentNotificationSeeder` - Notifikasi agen
+- `AgentPaymentSeeder` - Pembayaran via agen
+- `AgentMonthlyPaymentSeeder` - Pembayaran bulanan
+- `AgentVoucherSaleSeeder` - Penjualan voucher
+
+### Network Infrastructure
+- `OdpSeeder` - 5 ODP dengan koordinat GPS
+- `NetworkSegmentSeeder` - Segmen jaringan
+- `CableRouteSeeder` - Rute kabel customer
+- `OnuDeviceSeeder` - Perangkat ONU
+- `CableMaintenanceLogSeeder` - Log maintenance
+
+### Customers & Billing
+- `CustomerSeeder` - 5 customer dummy
+- `InvoiceSeeder` - Invoice bulanan
+
+### Voucher System
+- `VoucherPurchaseSeeder` - 20 transaksi voucher
+- `VoucherGenerationSettingSeeder` - Setting generator
+- `VoucherOnlineSettingSeeder` - Setting online (1H-30D)
+- `VoucherDeliveryLogSeeder` - Log pengiriman
+
+### Reports
+- `MonthlySummarySeeder` - Ringkasan 3 bulan terakhir
+
+**Dokumentasi lengkap**: Lihat `database/seeders/README.md`
+
+---
+
+## 🚀 Instalasi & Setup
 
 ### Prasyarat
 - PHP >= 8.2
 - Composer
-- MySQL
-- Node.js & NPM
+- MySQL >= 8.0
+- Node.js >= 18.x & NPM
 
 ### Langkah Instalasi
 
-1.  **Clone Repository**
-    ```bash
-    git clone https://github.com/rizkylab/gembok-lara.git
-    cd gembok-lara
-    ```
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/rizkylab/gembok-lara.git
+   cd gembok-lara
+   ```
 
-2.  **Install Dependencies**
-    ```bash
-    composer install
-    npm install
-    ```
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-3.  **Konfigurasi Environment**
-    Salin file `.env.example` ke `.env` dan sesuaikan database credentials.
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
+3. **Konfigurasi Environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   
+   Edit `.env` dan sesuaikan database credentials:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=gembok_lara
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-4.  **Setup Database**
-    Jalankan migrasi dan seeder untuk mengisi data dummy.
-    ```bash
-    php artisan migrate:fresh --seed
-    ```
+4. **Setup Database**
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-5.  **Build Assets**
-    ```bash
-    npm run build
-    ```
+5. **Build Assets**
+   ```bash
+   npm run build
+   # atau untuk development
+   npm run dev
+   ```
 
-6.  **Jalankan Server**
-    ```bash
-    php artisan serve
-    ```
+6. **Jalankan Server**
+   ```bash
+   php artisan serve
+   ```
 
 Akses aplikasi di: `http://localhost:8000`
 
@@ -117,85 +219,135 @@ Akses aplikasi di: `http://localhost:8000`
 
 ## 🔑 Akun Demo
 
-Gunakan kredensial berikut untuk masuk ke sistem:
-
 | Role | Email | Password |
 |------|-------|----------|
-| **Administrator** | `admin@gembok.com` | `admin123` |
+| **Administrator** | `admin@gembok.com` | `password` |
 
 ---
 
-## 📚 Struktur Proyek
+## 🛠️ Tech Stack
 
-- `app/Http/Controllers/Admin`: Logika bisnis utama (Customer, Invoice, dll).
-- `app/Models`: Representasi tabel database (Eloquent).
-- `resources/views/admin`: Tampilan antarmuka (Blade Templates).
-- `routes/web.php`: Definisi routing aplikasi.
-- `database/migrations`: Skema database.
+### Backend
+- **Laravel 12** - PHP Framework
+- **MySQL 8** - Database
+- **Eloquent ORM** - Database abstraction
+
+### Frontend
+- **Blade Templates** - Templating engine
+- **Tailwind CSS 3** - Utility-first CSS
+- **Alpine.js** - Lightweight JavaScript
+- **Chart.js 4** - Interactive charts
+- **Leaflet.js** - Interactive maps
+- **Font Awesome 6** - Icon library
+
+### Tools & Libraries
+- **Vite** - Frontend build tool
+- **Composer** - PHP dependency manager
+- **NPM** - JavaScript package manager
 
 ---
 
-## 🤝 Cara Kontribusi
+## 📁 Struktur Proyek
 
-Kami sangat menghargai kontribusi Anda untuk pengembangan GEMBOK LARA. Berikut adalah panduan untuk berkontribusi:
+```
+gembok-lara/
+├── app/
+│   ├── Http/Controllers/Admin/  # Controllers
+│   ├── Models/                   # Eloquent Models
+│   └── Providers/                # Service Providers
+├── database/
+│   ├── migrations/               # Database migrations
+│   └── seeders/                  # Database seeders
+├── resources/
+│   ├── views/admin/              # Blade templates
+│   ├── css/                      # Stylesheets
+│   └── js/                       # JavaScript
+├── routes/
+│   └── web.php                   # Route definitions
+├── public/                       # Public assets
+└── img/                          # Screenshots
+```
 
-1.  **Fork Repository**
-    Klik tombol "Fork" di pojok kanan atas halaman repository ini untuk menyalin proyek ke akun GitHub Anda.
+---
 
-2.  **Clone Repository**
-    Clone repository yang sudah Anda fork ke komputer lokal Anda:
-    ```bash
-    git clone https://github.com/rizkylab/gembok-lara.git
-    ```
+## 🔒 Keamanan
 
-3.  **Buat Branch Baru**
-    Selalu buat branch baru untuk setiap fitur atau perbaikan bug yang Anda kerjakan:
-    ```bash
-    git checkout -b fitur-baru-anda
-    ```
+GEMBOK LARA dibangun dengan standar keamanan Laravel:
 
-4.  **Lakukan Perubahan**
-    Lakukan coding sesuai standar Laravel dan pastikan kode Anda bersih.
+- ✅ **Authentication** - Session-based dengan Bcrypt hashing
+- ✅ **CSRF Protection** - Token pada semua form
+- ✅ **SQL Injection Protection** - Eloquent ORM binding
+- ✅ **XSS Protection** - Blade auto-escaping
+- ✅ **Input Validation** - Validasi ketat pada semua input
+- ✅ **Password Hashing** - Bcrypt dengan salt
+- ✅ **Secure Headers** - HTTP security headers
 
-5.  **Commit Perubahan**
-    Gunakan pesan commit yang deskriptif:
-    ```bash
-    git commit -m "Menambahkan fitur X: deskripsi singkat"
-    ```
+---
 
-6.  **Push ke GitHub**
-    Push branch Anda ke repository fork Anda:
-    ```bash
-    git push origin fitur-baru-anda
-    ```
+## 📝 Changelog
 
-7.  **Buat Pull Request (PR)**
-    Buka halaman repository asli dan buat Pull Request dari branch Anda. Jelaskan perubahan yang Anda lakukan secara detail.
+### Version 1.0.0 (Current)
+- ✅ Complete CRUD for all modules
+- ✅ Modern UI with Cyan/Blue theme
+- ✅ Interactive dashboard with Chart.js
+- ✅ Network map with Leaflet.js
+- ✅ 23 database seeders
+- ✅ Responsive design
+- ✅ Print-ready invoice template
+- ✅ Agent management system
+- ✅ Voucher system
+- ✅ ODP & network management
+
+---
+
+## 🤝 Kontribusi
+
+Kami sangat menghargai kontribusi Anda!
+
+1. Fork repository
+2. Buat branch baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
 
 ---
 
 ## 💬 Dukungan
 
-Jika Anda mengalami masalah atau memiliki pertanyaan seputar penggunaan GEMBOK LARA, silakan:
-
-*   **Buat Issue**: Laporkan bug atau request fitur melalui tab [Issues](https://github.com/rizkylab/gembok-lara/issues) di GitHub.
-*   **Diskusi**: Bergabunglah dalam diskusi komunitas (jika tersedia) atau hubungi pengembang utama.
+- **Issues**: [GitHub Issues](https://github.com/rizkylab/gembok-lara/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/rizkylab/gembok-lara/discussions)
 
 ---
 
 ## 📄 License
 
-Proyek ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, memodifikasi, dan mendistribusikan ulang proyek ini sesuai dengan ketentuan lisensi. Lihat file `LICENSE` untuk detail lebih lanjut.
+Proyek ini dilisensikan di bawah **MIT License**. Lihat file `LICENSE` untuk detail.
 
 ---
 
-## 🔗 Referensi
+## 🙏 Acknowledgments
 
-Proyek ini dibangun sebagai referensi dan pengembangan modern dari proyek open-source:
-**[Gembok Bill](https://github.com/alijayanet/gembok-bill)** oleh Ali Jaya Net.
+Proyek ini terinspirasi dari:
+- **[Gembok Bill](https://github.com/alijayanet/gembok-bill)** oleh Ali Jaya Net
 
-Kami mengucapkan terima kasih kepada pengembang asli atas inspirasi dan fondasi logika bisnis yang telah dibangun.
+Terima kasih kepada:
+- Laravel Community
+- Tailwind CSS Team
+- Chart.js Contributors
+- Leaflet.js Team
 
 ---
 
-**GEMBOK LARA** - _Simplifying ISP Management_
+## 📞 Contact
+
+**Developer**: Rizky Lab  
+**Email**: rizkylab@example.com  
+**GitHub**: [@rizkylab](https://github.com/rizkylab)
+
+---
+
+<div align="center">
+  <strong>GEMBOK LARA</strong> - <em>Simplifying ISP Management</em>
+  <br><br>
+  Made with ❤️ using Laravel & Tailwind CSS
+</div>

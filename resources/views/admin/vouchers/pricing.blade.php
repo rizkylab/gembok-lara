@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-500">Agent Price</span>
-                                    <span class="font-bold text-purple-600">Rp {{ number_format($pricing->agent_price, 0, ',', '.') }}</span>
+                                    <span class="font-bold text-cyan-600">Rp {{ number_format($pricing->agent_price, 0, ',', '.') }}</span>
                                 </div>
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-500">Commission</span>

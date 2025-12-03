@@ -20,7 +20,7 @@
                     <a href="{{ route('admin.network.map') }}" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
                         <i class="fas fa-map-marked-alt mr-2"></i>Map View
                     </a>
-                    <a href="{{ route('admin.network.odps.create') }}" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition shadow-lg">
+                    <a href="{{ route('admin.network.odps.create') }}" class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition shadow-lg">
                         <i class="fas fa-plus mr-2"></i>Add ODP
                     </a>
                 </div>

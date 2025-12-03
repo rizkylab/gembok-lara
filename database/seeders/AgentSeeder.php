@@ -11,21 +11,33 @@ class AgentSeeder extends Seeder
     {
         $agents = [
             [
+                'username' => 'berkah',
                 'name' => 'Warung Berkah',
                 'phone' => '083134567890',
                 'email' => 'berkah@agent.com',
                 'address' => 'Jl. Kebon Jeruk No. 12',
-                'balance' => 500000,
                 'status' => 'active',
+                'commission_rate' => 5.00,
                 'password' => bcrypt('password'),
             ],
             [
+                'username' => 'jaya',
                 'name' => 'Counter Pulsa Jaya',
                 'phone' => '083134567891',
                 'email' => 'jaya@agent.com',
                 'address' => 'Jl. Raya Bogor KM 25',
-                'balance' => 150000,
                 'status' => 'active',
+                'commission_rate' => 5.00,
+                'password' => bcrypt('password'),
+            ],
+            [
+                'username' => 'makmur',
+                'name' => 'Toko Makmur',
+                'phone' => '083134567892',
+                'email' => 'makmur@agent.com',
+                'address' => 'Jl. Sudirman No. 88',
+                'status' => 'active',
+                'commission_rate' => 7.00,
                 'password' => bcrypt('password'),
             ],
         ];

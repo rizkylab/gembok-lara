@@ -16,7 +16,7 @@
                     <h1 class="text-3xl font-bold text-gray-900">Technicians</h1>
                     <p class="text-gray-600 mt-1">Manage field technicians and installers</p>
                 </div>
-                <a href="{{ route('admin.technicians.create') }}" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg">
+                <a href="{{ route('admin.technicians.create') }}" class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-105 shadow-lg">
                     <i class="fas fa-plus mr-2"></i>Add Technician
                 </a>
             </div>
@@ -73,7 +73,7 @@
                                 <tr class="hover:bg-gray-50 transition">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
                                                 {{ strtoupper(substr($technician->name, 0, 1)) }}
                                             </div>
                                             <div class="ml-4">

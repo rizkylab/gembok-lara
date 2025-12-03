@@ -17,6 +17,11 @@ Route::get('/', function () {
     return redirect('/admin/login');
 });
 
+// Default login route (redirect to admin login)
+Route::get('/login', function () {
+    return redirect('/admin/login');
+})->name('login');
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
     // Auth Routes
