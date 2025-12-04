@@ -1,0 +1,123 @@
+<?php
+
+return [
+    // General
+    'dashboard' => 'Dashboard',
+    'home' => 'Home',
+    'settings' => 'Settings',
+    'profile' => 'Profile',
+    'logout' => 'Logout',
+    'login' => 'Login',
+    'register' => 'Register',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'delete' => 'Delete',
+    'edit' => 'Edit',
+    'create' => 'Create',
+    'update' => 'Update',
+    'search' => 'Search',
+    'filter' => 'Filter',
+    'actions' => 'Actions',
+    'status' => 'Status',
+    'date' => 'Date',
+    'name' => 'Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'description' => 'Description',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'all' => 'All',
+    'back' => 'Back',
+    'view' => 'View',
+    'details' => 'Details',
+    'total' => 'Total',
+    'amount' => 'Amount',
+    'price' => 'Price',
+    
+    // Customers
+    'customers' => 'Customers',
+    'customer' => 'Customer',
+    'add_customer' => 'Add Customer',
+    'edit_customer' => 'Edit Customer',
+    'customer_details' => 'Customer Details',
+    'total_customers' => 'Total Customers',
+    'active_customers' => 'Active Customers',
+    'suspended' => 'Suspended',
+    
+    // Packages
+    'packages' => 'Packages',
+    'package' => 'Package',
+    'add_package' => 'Add Package',
+    'edit_package' => 'Edit Package',
+    'speed' => 'Speed',
+    
+    // Invoices
+    'invoices' => 'Invoices',
+    'invoice' => 'Invoice',
+    'add_invoice' => 'Create Invoice',
+    'paid' => 'Paid',
+    'unpaid' => 'Unpaid',
+    'overdue' => 'Overdue',
+    'due_date' => 'Due Date',
+    'paid_date' => 'Paid Date',
+    'payment' => 'Payment',
+    'payments' => 'Payments',
+    
+    // Tickets
+    'tickets' => 'Tickets',
+    'ticket' => 'Ticket',
+    'new_ticket' => 'New Ticket',
+    'open_tickets' => 'Open Tickets',
+    'subject' => 'Subject',
+    'priority' => 'Priority',
+    'category' => 'Category',
+    'low' => 'Low',
+    'medium' => 'Medium',
+    'high' => 'High',
+    'urgent' => 'Urgent',
+    'open' => 'Open',
+    'in_progress' => 'In Progress',
+    'waiting_customer' => 'Waiting Customer',
+    'resolved' => 'Resolved',
+    'closed' => 'Closed',
+    'reply' => 'Reply',
+    'internal_note' => 'Internal Note',
+    
+    // Staff
+    'technicians' => 'Technicians',
+    'collectors' => 'Collectors',
+    'agents' => 'Agents',
+    
+    // Network
+    'network' => 'Network',
+    'odp' => 'ODP',
+    'mikrotik' => 'Mikrotik',
+    'cpe' => 'CPE',
+    
+    // Reports
+    'reports' => 'Reports',
+    'revenue' => 'Revenue',
+    'monthly_revenue' => 'Monthly Revenue',
+    
+    // Messages
+    'success' => 'Success',
+    'error' => 'Error',
+    'warning' => 'Warning',
+    'info' => 'Information',
+    'created_successfully' => ':item created successfully',
+    'updated_successfully' => ':item updated successfully',
+    'deleted_successfully' => ':item deleted successfully',
+    'confirm_delete' => 'Are you sure you want to delete this :item?',
+    
+    // Auth
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'change_password' => 'Change Password',
+    'remember_me' => 'Remember Me',
+    'forgot_password' => 'Forgot Password?',
+];

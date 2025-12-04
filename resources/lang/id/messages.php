@@ -1,0 +1,123 @@
+<?php
+
+return [
+    // General
+    'dashboard' => 'Dashboard',
+    'home' => 'Beranda',
+    'settings' => 'Pengaturan',
+    'profile' => 'Profil',
+    'logout' => 'Keluar',
+    'login' => 'Masuk',
+    'register' => 'Daftar',
+    'save' => 'Simpan',
+    'cancel' => 'Batal',
+    'delete' => 'Hapus',
+    'edit' => 'Edit',
+    'create' => 'Buat',
+    'update' => 'Perbarui',
+    'search' => 'Cari',
+    'filter' => 'Filter',
+    'actions' => 'Aksi',
+    'status' => 'Status',
+    'date' => 'Tanggal',
+    'name' => 'Nama',
+    'email' => 'Email',
+    'phone' => 'Telepon',
+    'address' => 'Alamat',
+    'description' => 'Deskripsi',
+    'active' => 'Aktif',
+    'inactive' => 'Tidak Aktif',
+    'yes' => 'Ya',
+    'no' => 'Tidak',
+    'all' => 'Semua',
+    'back' => 'Kembali',
+    'view' => 'Lihat',
+    'details' => 'Detail',
+    'total' => 'Total',
+    'amount' => 'Jumlah',
+    'price' => 'Harga',
+    
+    // Customers
+    'customers' => 'Pelanggan',
+    'customer' => 'Pelanggan',
+    'add_customer' => 'Tambah Pelanggan',
+    'edit_customer' => 'Edit Pelanggan',
+    'customer_details' => 'Detail Pelanggan',
+    'total_customers' => 'Total Pelanggan',
+    'active_customers' => 'Pelanggan Aktif',
+    'suspended' => 'Ditangguhkan',
+    
+    // Packages
+    'packages' => 'Paket',
+    'package' => 'Paket',
+    'add_package' => 'Tambah Paket',
+    'edit_package' => 'Edit Paket',
+    'speed' => 'Kecepatan',
+    
+    // Invoices
+    'invoices' => 'Tagihan',
+    'invoice' => 'Tagihan',
+    'add_invoice' => 'Buat Tagihan',
+    'paid' => 'Lunas',
+    'unpaid' => 'Belum Lunas',
+    'overdue' => 'Jatuh Tempo',
+    'due_date' => 'Tanggal Jatuh Tempo',
+    'paid_date' => 'Tanggal Bayar',
+    'payment' => 'Pembayaran',
+    'payments' => 'Pembayaran',
+    
+    // Tickets
+    'tickets' => 'Tiket',
+    'ticket' => 'Tiket',
+    'new_ticket' => 'Tiket Baru',
+    'open_tickets' => 'Tiket Terbuka',
+    'subject' => 'Subjek',
+    'priority' => 'Prioritas',
+    'category' => 'Kategori',
+    'low' => 'Rendah',
+    'medium' => 'Sedang',
+    'high' => 'Tinggi',
+    'urgent' => 'Mendesak',
+    'open' => 'Terbuka',
+    'in_progress' => 'Dalam Proses',
+    'waiting_customer' => 'Menunggu Pelanggan',
+    'resolved' => 'Selesai',
+    'closed' => 'Ditutup',
+    'reply' => 'Balas',
+    'internal_note' => 'Catatan Internal',
+    
+    // Staff
+    'technicians' => 'Teknisi',
+    'collectors' => 'Kolektor',
+    'agents' => 'Agen',
+    
+    // Network
+    'network' => 'Jaringan',
+    'odp' => 'ODP',
+    'mikrotik' => 'Mikrotik',
+    'cpe' => 'CPE',
+    
+    // Reports
+    'reports' => 'Laporan',
+    'revenue' => 'Pendapatan',
+    'monthly_revenue' => 'Pendapatan Bulanan',
+    
+    // Messages
+    'success' => 'Berhasil',
+    'error' => 'Error',
+    'warning' => 'Peringatan',
+    'info' => 'Informasi',
+    'created_successfully' => ':item berhasil dibuat',
+    'updated_successfully' => ':item berhasil diperbarui',
+    'deleted_successfully' => ':item berhasil dihapus',
+    'confirm_delete' => 'Apakah Anda yakin ingin menghapus :item ini?',
+    
+    // Auth
+    'password' => 'Kata Sandi',
+    'confirm_password' => 'Konfirmasi Kata Sandi',
+    'current_password' => 'Kata Sandi Saat Ini',
+    'new_password' => 'Kata Sandi Baru',
+    'change_password' => 'Ganti Kata Sandi',
+    'remember_me' => 'Ingat Saya',
+    'forgot_password' => 'Lupa Kata Sandi?',
+];

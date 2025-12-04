@@ -27,6 +27,9 @@ Route::prefix('order')->name('order.')->group(function () {
     Route::get('/track', [\App\Http\Controllers\OrderController::class, 'track'])->name('track');
 });
 
+// Language Switch
+Route::get('/language/{locale}', [\App\Http\Controllers\LanguageController::class, 'switch'])->name('language.switch');
+
 // Default login route (redirect to admin login)
 Route::get('/login', function () {
     return redirect('/admin/login');
