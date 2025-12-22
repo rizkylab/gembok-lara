@@ -144,11 +144,44 @@ class VoucherController extends Controller
     // Public methods
     public function purchase(Request $request)
     {
-        // Logic for public voucher purchase
+        $validated = $request->validate([
+            'package_id' => 'required|exists:voucher_pricing,id',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'payment_method' => 'required|in:midtrans,xendit,manual',
+        ]);
+
+        $voucherService = new \App\Services\VoucherService();
+
+        try {
+            $purchase = $voucherService->createPurchase([
+                'pricing_id' => $validated['package_id'],
+                'customer_name' => $validated['name'],
+                'customer_phone' => $validated['phone'],
+                'payment_method' => $validated['payment_method'],
+            ]);
+
+            // For manual payment or demo, activate immediately
+            if ($validated['payment_method'] === 'manual') {
+                $voucherService->manualActivate($purchase);
+                return redirect()->route('voucher.success', $purchase->id);
+            }
+
+            // For payment gateway, create payment and redirect
+            // TODO: Integrate with Midtrans/Xendit
+            // For now, simulate successful payment
+            $voucherService->processPayment($purchase, 'DEMO-' . time());
+            
+            return redirect()->route('voucher.success', $purchase->id);
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal memproses pembelian: ' . $e->getMessage());
+        }
     }
 
     public function success($id)
     {
-        // Logic for purchase success page
+        $purchase = \App\Models\VoucherPurchase::findOrFail($id);
+        return view('voucher.success', compact('purchase'));
     }
 }
