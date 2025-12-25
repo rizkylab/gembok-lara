@@ -140,7 +140,10 @@ class CustomerSeeder extends Seeder
         ];
 
         foreach ($customers as $customer) {
-            Customer::create($customer);
+            Customer::updateOrCreate(
+                ['username' => $customer['username']],
+                $customer
+            );
         }
     }
 }
