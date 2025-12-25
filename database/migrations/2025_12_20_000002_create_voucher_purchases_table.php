@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('voucher_purchases', function (Blueprint $table) {
+        Schema::create('voucher_purchases_order', function (Blueprint $table) {
             $table->id();
             $table->string('order_number')->unique();
             $table->unsignedBigInteger('pricing_id')->nullable();
@@ -41,6 +41,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('voucher_purchases');
+        Schema::dropIfExists('voucher_purchases_order');
     }
 };

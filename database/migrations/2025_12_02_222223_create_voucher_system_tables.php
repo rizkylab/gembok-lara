@@ -56,17 +56,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('voucher_pricing', function (Blueprint $table) {
-            $table->id();
-            $table->string('package_name');
-            $table->decimal('customer_price', 10, 2);
-            $table->decimal('agent_price', 10, 2);
-            $table->decimal('commission_amount', 10, 2);
-            $table->integer('duration')->default(0);
-            $table->text('description')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->timestamps();
-        });
+       
     }
 
     /**
