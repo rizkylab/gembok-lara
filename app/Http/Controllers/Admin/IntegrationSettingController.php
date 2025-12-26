@@ -357,44 +357,155 @@ class IntegrationSettingController extends Controller
         ]);
 
         try {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, rtrim($request->api_url, '/') . '/send');
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-                'target' => $request->test_number,
-                'message' => '🔔 Test koneksi dari GEMBOK LARA - ' . now()->format('d/m/Y H:i:s'),
-            ]));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json',
-                'Authorization: ' . $request->api_key,
+            $apiUrl = rtrim($request->api_url, '/');
+            $provider = $request->provider ?? 'fonnte';
+            $testNumber = preg_replace('/[^0-9]/', '', $request->test_number);
+            
+            // Format nomor ke 62xxx
+            if (substr($testNumber, 0, 1) === '0') {
+                $testNumber = '62' . substr($testNumber, 1);
+            }
+
+            \Log::info('WhatsApp Test Request', [
+                'provider' => $provider,
+                'api_url' => $apiUrl,
+                'test_number' => $testNumber,
             ]);
+
+            $ch = curl_init();
+            $message = '🔔 Test koneksi dari GEMBOK LARA - ' . now()->format('d/m/Y H:i:s');
+            
+            // Different format for different providers
+            if (str_contains($apiUrl, 'wablas')) {
+                // Wablas format
+                $endpoint = $apiUrl;
+                if (!str_contains($apiUrl, '/api/')) {
+                    $endpoint = $apiUrl . '/api/send-message';
+                }
+                
+                curl_setopt($ch, CURLOPT_URL, $endpoint);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                    'phone' => $testNumber,
+                    'message' => $message,
+                ]));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Authorization: ' . $request->api_key,
+                ]);
+                
+                \Log::info('Wablas Request', [
+                    'endpoint' => $endpoint,
+                    'phone' => $testNumber,
+                ]);
+                
+            } elseif (str_contains($apiUrl, 'fonnte')) {
+                // Fonnte format
+                curl_setopt($ch, CURLOPT_URL, $apiUrl . '/send');
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                    'target' => $testNumber,
+                    'message' => $message,
+                    'countryCode' => '62',
+                ]));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Authorization: ' . $request->api_key,
+                ]);
+                
+            } elseif (str_contains($apiUrl, 'woowa')) {
+                // Woowa format
+                curl_setopt($ch, CURLOPT_URL, $apiUrl . '/api/send-message');
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+                    'phone_no' => $testNumber,
+                    'key' => $request->api_key,
+                    'message' => $message,
+                ]));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Content-Type: application/json',
+                ]);
+                
+            } else {
+                // Generic/Custom API format
+                curl_setopt($ch, CURLOPT_URL, $apiUrl);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+                    'phone' => $testNumber,
+                    'message' => $message,
+                ]));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Content-Type: application/json',
+                    'Authorization: ' . $request->api_key,
+                ]);
+            }
+            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             
             $response = curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $error = curl_error($ch);
+            $curlError = curl_error($ch);
+            $curlInfo = curl_getinfo($ch);
             curl_close($ch);
 
-            if ($error) {
-                throw new \Exception($error);
+            \Log::info('WhatsApp Test Response', [
+                'http_code' => $httpCode,
+                'response' => $response,
+                'curl_error' => $curlError,
+                'effective_url' => $curlInfo['url'] ?? '',
+            ]);
+
+            if ($curlError) {
+                throw new \Exception('CURL Error: ' . $curlError);
             }
 
             $result = json_decode($response, true);
+            
+            // Check success based on provider response
+            $isSuccess = false;
+            $errorMessage = 'Unknown error';
+            
+            if (str_contains($apiUrl, 'wablas')) {
+                // Wablas success check
+                $isSuccess = isset($result['status']) && $result['status'] === true;
+                $errorMessage = $result['message'] ?? ($result['error'] ?? 'Gagal mengirim pesan');
+            } elseif (str_contains($apiUrl, 'fonnte')) {
+                // Fonnte success check
+                $isSuccess = isset($result['status']) && $result['status'] === true;
+                $errorMessage = $result['reason'] ?? 'Gagal mengirim pesan';
+            } else {
+                // Generic check
+                $isSuccess = $httpCode >= 200 && $httpCode < 300;
+                $errorMessage = $result['message'] ?? $result['error'] ?? 'Gagal mengirim pesan';
+            }
 
             // Update test result
             $setting = IntegrationSetting::getByType('whatsapp');
             if ($setting) {
-                $setting->updateTestResult($httpCode === 200, $response);
+                $setting->updateTestResult($isSuccess, $isSuccess ? 'Pesan terkirim' : $errorMessage);
             }
 
             return response()->json([
-                'success' => $httpCode === 200,
-                'message' => $httpCode === 200 ? 'Pesan test berhasil dikirim!' : 'Gagal mengirim pesan',
-                'data' => $result
+                'success' => $isSuccess,
+                'message' => $isSuccess ? 'Pesan test berhasil dikirim!' : 'Gagal: ' . $errorMessage,
+                'data' => $result,
+                'debug' => [
+                    'http_code' => $httpCode,
+                    'raw_response' => $response,
+                ]
             ]);
 
         } catch (\Exception $e) {
+            \Log::error('WhatsApp Test Error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            
+            $setting = IntegrationSetting::getByType('whatsapp');
+            if ($setting) {
+                $setting->updateTestResult(false, $e->getMessage());
+            }
+
             return response()->json([
                 'success' => false,
                 'message' => 'Error: ' . $e->getMessage()
