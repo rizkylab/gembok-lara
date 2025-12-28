@@ -24,6 +24,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        // Get Duitku settings from app_settings
+        $duitkuEnabled = \App\Models\AppSetting::getValue('duitku_enabled', 'false') === 'true';
+        $duitkuProduction = \App\Models\AppSetting::getValue('duitku_production', 'false') === 'true';
+        
         $settings = [
             'midtrans' => [
                 'enabled' => !empty(config('services.midtrans.server_key')),
@@ -31,6 +35,10 @@ class PaymentController extends Controller
             ],
             'xendit' => [
                 'enabled' => !empty(config('services.xendit.secret_key')),
+            ],
+            'duitku' => [
+                'enabled' => $duitkuEnabled,
+                'is_production' => $duitkuProduction,
             ],
             'default_gateway' => config('services.payment.default_gateway', 'midtrans'),
         ];
