@@ -12,7 +12,7 @@
         <main class="p-6">
             <div class="mb-6">
                 <h1 class="text-2xl font-bold text-gray-900">Sync Mikrotik</h1>
-                <p class="text-gray-600">Import data dari Mikrotik ke GEMBOK LARA</p>
+                <p class="text-gray-600">Import data dari Mikrotik ke {{ companyName() }}</p>
             </div>
 
             @if(session('success'))
@@ -87,7 +87,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Data GEMBOK LARA</h3>
+                                <h3 class="text-lg font-semibold text-gray-900">Data {{ companyName() }}</h3>
                                 <p class="text-sm text-gray-500">Database Lokal</p>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                         </div>
                         <div class="p-6">
                             <p class="text-gray-600 text-sm mb-4">
-                                Sinkronkan PPPoE Profile dari Mikrotik ke Paket di GEMBOK LARA. 
+                                Sinkronkan PPPoE Profile dari Mikrotik ke Paket di {{ companyName() }}. 
                                 Anda bisa mapping ke paket yang sudah ada atau membuat paket baru.
                             </p>
                             <ul class="text-sm text-gray-500 mb-4 space-y-1">

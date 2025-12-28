@@ -76,7 +76,7 @@
             <p class="text-sm text-gray-600 mb-2">Transfer ke:</p>
             <p class="font-semibold text-gray-800">Bank BCA</p>
             <p class="text-lg font-mono text-gray-800">1234567890</p>
-            <p class="text-gray-600">a.n. PT Arsa Net Indonesia</p>
+            <p class="text-gray-600">a.n. {{ companyName() }}</p>
         </div>
     </div>
 </div>

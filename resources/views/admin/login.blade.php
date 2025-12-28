@@ -51,7 +51,7 @@
                         <i class="fas fa-network-wired text-white text-4xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-5xl font-bold tracking-tight">GEMBOK LARA</h1>
+                        <h1 class="text-5xl font-bold tracking-tight">{{ companyName() }}</h1>
                         <p class="text-cyan-200 text-lg">ISP Management System</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                     <div class="mx-auto h-16 w-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl flex items-center justify-center mb-4">
                         <i class="fas fa-network-wired text-white text-2xl"></i>
                     </div>
-                    <h2 class="text-3xl font-bold text-gray-900">GEMBOK LARA</h2>
+                    <h2 class="text-3xl font-bold text-gray-900">{{ companyName() }}</h2>
                     <p class="text-gray-600 mt-1">ISP Management System</p>
                 </div>
 
@@ -197,7 +197,7 @@
 
             <!-- Footer -->
             <div class="text-center mt-6 text-white text-sm">
-                <p>&copy; 2025 GEMBOK LARA. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} {{ companyName() }}. All rights reserved.</p>
             </div>
         </div>
     </div>

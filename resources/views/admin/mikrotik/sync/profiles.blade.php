@@ -13,7 +13,7 @@
             <div class="mb-6 flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-900">Sync PPPoE Profiles</h1>
-                    <p class="text-gray-600">Mapping PPPoE Profile Mikrotik ke Paket GEMBOK LARA</p>
+                    <p class="text-gray-600">Mapping PPPoE Profile Mikrotik ke Paket {{ companyName() }}</p>
                 </div>
                 <a href="{{ route('admin.mikrotik.sync.index') }}" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
                     ← Kembali

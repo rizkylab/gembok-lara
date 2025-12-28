@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Customer - GEMBOK LARA</title>
+    <title>Login Customer - {{ companyName() }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,7 +15,7 @@
                     <i class="fas fa-user text-white text-3xl"></i>
                 </div>
                 <h1 class="text-2xl font-bold text-gray-800">Portal Pelanggan</h1>
-                <p class="text-gray-500 mt-1">GEMBOK LARA</p>
+                <p class="text-gray-500 mt-1">{{ companyName() }}</p>
             </div>
 
             @if(session('error'))
@@ -80,7 +80,7 @@
         </div>
 
         <p class="text-center text-white/70 text-sm mt-6">
-            &copy; {{ date('Y') }} GEMBOK LARA - ISP Billing System
+            &copy; {{ date('Y') }} {{ companyName() }} - ISP Billing System
         </p>
     </div>
 

@@ -27,7 +27,7 @@
                     <!-- Invoice Header -->
                     <div class="flex justify-between items-start mb-8 pb-6 border-b">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-900">GEMBOK LARA</h2>
+                            <h2 class="text-2xl font-bold text-gray-900">{{ companyName() }}</h2>
                             <p class="text-gray-600 mt-2">ISP Management System</p>
                         </div>
                         <div class="text-right">

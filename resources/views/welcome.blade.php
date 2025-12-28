@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsa Net - Internet Service Provider</title>
+    <title>{{ companyName() }} - Internet Service Provider</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -16,7 +16,7 @@
                     <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
                         <i class="fas fa-wifi text-white"></i>
                     </div>
-                    <span class="text-xl font-bold text-white">Arsa Net</span>
+                    <span class="text-xl font-bold text-white">{{ companyName() }}</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#packages" class="text-gray-300 hover:text-cyan-400 transition">Paket</a>
@@ -189,12 +189,12 @@
                     <p class="text-gray-400">0812-3456-7890</p>
                 </a>
                 
-                <a href="mailto:info@arsa.net" class="bg-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-700 transition">
+                <a href="mailto:{{ companyEmail() }}" class="bg-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-700 transition">
                     <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-envelope text-purple-400 text-3xl"></i>
                     </div>
                     <h3 class="text-lg font-semibold text-white mb-2">Email</h3>
-                    <p class="text-gray-400">info@arsa.net</p>
+                    <p class="text-gray-400">{{ companyEmail() }}</p>
                 </a>
             </div>
         </div>
@@ -209,7 +209,7 @@
                         <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
                             <i class="fas fa-wifi text-white"></i>
                         </div>
-                        <span class="text-xl font-bold text-white">Arsa Net</span>
+                        <span class="text-xl font-bold text-white">{{ companyName() }}</span>
                     </div>
                     <p class="text-gray-400 text-sm">Internet Service Provider terpercaya untuk rumah dan bisnis Anda.</p>
                 </div>
@@ -249,7 +249,7 @@
             </div>
             
             <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; {{ date('Y') }} Arsa Net. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} {{ companyName() }}. All rights reserved.</p>
             </div>
         </div>
     </footer>

@@ -22,6 +22,9 @@ class SettingController extends Controller
                 ['key' => $key],
                 ['value' => $value]
             );
+            
+            // Clear cache for this setting
+            \Illuminate\Support\Facades\Cache::forget("app_setting_{$key}");
         }
 
         return redirect()->back()->with('success', 'Settings updated successfully!');

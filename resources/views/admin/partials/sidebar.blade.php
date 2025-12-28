@@ -8,7 +8,7 @@
             <div class="h-10 w-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
                 <i class="fas fa-network-wired text-white"></i>
             </div>
-            <span class="text-white font-bold text-xl tracking-wide">GEMBOK LARA</span>
+            <span class="text-white font-bold text-xl tracking-wide">{{ companyName() }}</span>
         </div>
     </div>
 
