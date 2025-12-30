@@ -60,7 +60,7 @@ jobs:
         run: semgrep scan --config auto --config p/php --config p/security-audit --json --output=semgrep-results.json || true
 
       - name: Upload Semgrep results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: semgrep-results
           path: semgrep-results.json
@@ -120,7 +120,7 @@ jobs:
         run: npm audit --json > npm-audit-results.json || true
 
       - name: Upload NPM Audit results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: npm-audit-results
           path: npm-audit-results.json
