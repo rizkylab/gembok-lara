@@ -8,15 +8,21 @@ class Technician extends Model
 {
     protected $fillable = [
         'name',
+        'username',
         'phone',
         'role',
         'email',
+        'password',
         'notes',
         'is_active',
         'area_coverage',
         'join_date',
         'last_login',
         'whatsapp_group_id',
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 
     protected $casts = [

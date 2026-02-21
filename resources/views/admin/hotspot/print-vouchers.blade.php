@@ -12,62 +12,67 @@
         }
         
         body {
-            font-family: 'Courier New', monospace;
+            font-family: Arial, sans-serif;
             background: #fff;
         }
         
         .voucher-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            display: flex;
+            flex-wrap: wrap;
             padding: 10px;
         }
         
         .voucher {
-            border: 2px dashed #333;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
+            width: 190px;
+            border: 2px solid #000;
+            border-radius: 6px;
+            margin: 5px;
             page-break-inside: avoid;
+            background: #fff;
+            overflow: hidden;
         }
         
         .voucher-header {
+            background-color: #2b3a4a; /* Laska dark theme */
+            color: #fff;
+            padding: 5px;
+            text-align: center;
             font-size: 14px;
             font-weight: bold;
-            margin-bottom: 10px;
-            color: #0891b2;
+            border-bottom: 2px solid #000;
+            letter-spacing: 1px;
         }
         
-        .voucher-profile {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
+        .voucher-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5px 0;
         }
         
-        .voucher-credentials {
-            background: #f3f4f6;
-            padding: 10px;
-            border-radius: 4px;
-            margin: 10px 0;
+        .voucher-table td {
+            padding: 2px 5px;
+            font-size: 13px;
         }
         
-        .voucher-label {
-            font-size: 10px;
-            color: #666;
-            text-transform: uppercase;
-        }
-        
-        .voucher-value {
-            font-size: 16px;
+        .voucher-table .label {
+            width: 40px;
             font-weight: bold;
-            letter-spacing: 2px;
-            margin: 4px 0;
+        }
+        
+        .voucher-table .value {
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
         }
         
         .voucher-footer {
-            font-size: 10px;
-            color: #999;
-            margin-top: 10px;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 5px;
+            font-size: 11px;
+            border-top: 1px solid #000;
+            color: #333;
+            font-weight: bold;
         }
         
         @media print {
@@ -81,8 +86,11 @@
             }
             
             .voucher-grid {
-                gap: 5px;
-                padding: 5px;
+                padding: 0;
+            }
+
+            .voucher {
+                margin: 4px;
             }
         }
     </style>
@@ -100,22 +108,35 @@
 
     <div class="voucher-grid">
         @foreach($vouchers as $voucher)
+        @php
+            $profileName = is_array($voucher) ? $voucher['profile'] : $voucher->profile_name;
+            $username = is_array($voucher) ? $voucher['username'] : $voucher->username;
+            $password = is_array($voucher) ? $voucher['password'] : $voucher->password;
+            
+            $validity = isset($profile) && $profile->validity ? $profile->validity : '';
+            $price = isset($profile) && $profile->price ? 'Rp'.number_format($profile->price, 0, ',', '.') : '';
+        @endphp
         <div class="voucher">
-            <div class="voucher-header">🌐 HOTSPOT VOUCHER</div>
-            <div class="voucher-profile">
-                {{ is_array($voucher) ? $voucher['profile'] : $voucher->profile_name }}
-                @if(isset($profile) && $profile->validity)
-                    ({{ $profile->validity }})
-                @endif
+            <div class="voucher-header">
+                HOTSPOT VOUCHER
             </div>
-            <div class="voucher-credentials">
-                <div class="voucher-label">Username</div>
-                <div class="voucher-value">{{ is_array($voucher) ? $voucher['username'] : $voucher->username }}</div>
-                <div class="voucher-label" style="margin-top: 8px;">Password</div>
-                <div class="voucher-value">{{ is_array($voucher) ? $voucher['password'] : $voucher->password }}</div>
-            </div>
+            <table class="voucher-table">
+                <tr>
+                    <td class="label">User</td>
+                    <td>:</td>
+                    <td class="value">{{ $username }}</td>
+                </tr>
+                <tr>
+                    <td class="label">Pass</td>
+                    <td>:</td>
+                    <td class="value">{{ $password }}</td>
+                </tr>
+            </table>
             <div class="voucher-footer">
-                Connect to WiFi → Open browser → Login
+                @if($price || $validity)
+                    {{ $price }}{{ $price && $validity ? ' / ' : '' }}{{ $validity }}<br>
+                @endif
+                {{ $profileName }}
             </div>
         </div>
         @endforeach

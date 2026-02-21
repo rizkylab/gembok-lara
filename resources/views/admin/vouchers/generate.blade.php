@@ -25,6 +25,17 @@
                 </div>
                 <h1 class="text-3xl font-bold text-gray-900">Generate Vouchers</h1>
                 <p class="text-gray-600 mt-1">Create vouchers for online sales or Mikrotik hotspot</p>
+                
+                <div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start">
+                    <i class="fas fa-info-circle text-blue-500 mt-0.5 mr-3 text-lg"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold text-blue-800">Panduan Fitur (Simpan Database vs Sync Mikrotik)</h4>
+                        <ul class="text-sm text-blue-700 mt-1 list-disc list-inside space-y-1">
+                            <li><strong>Simpan Database (Tanpa Centang Sync):</strong> Voucher hanya dibuat dan disimpan di sistem lokal Gembok. Belum bisa digunakan login di jaringan Mikrotik.</li>
+                            <li><strong>Sync ke Mikrotik (Dicentang):</strong> Data voucher akan langsung dikirim (Push) ke router Mikrotik sehingga pelanggan bisa langsung menggunakannya. <em>(Proses ini mungkin membutuhkan waktu sedikit lebih lama tergantung jumlah voucher yang dibuat).</em></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Form -->

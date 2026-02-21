@@ -13,6 +13,9 @@
             <button onclick="showCustomers()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                 <i class="fas fa-users mr-1"></i> Pelanggan
             </button>
+            <button onclick="toggleCables()" class="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition">
+                <i class="fas fa-network-wired mr-1"></i> Jalur Kabel
+            </button>
         </div>
     </div>
 
@@ -110,12 +113,45 @@
         map.fitBounds(bounds, { padding: [50, 50] });
     }
 
+    // Connect ODP and Customers with Polyline
+    const cablesLayer = L.layerGroup();
+    customers.forEach(customer => {
+        if (customer.latitude && customer.longitude) {
+            // Find ODP assigned to this customer.
+            // Assuming customer has odp_id or we find the closest one if not defined natively.
+            const odp = customer.odp_id ? odps.find(o => o.id === customer.odp_id) : null;
+            if (odp && odp.latitude && odp.longitude) {
+                const latlngs = [
+                    [parseFloat(odp.latitude), parseFloat(odp.longitude)],
+                    [parseFloat(customer.latitude), parseFloat(customer.longitude)]
+                ];
+                const polyline = L.polyline(latlngs, {
+                    color: '#475569', 
+                    weight: 2, 
+                    dashArray: '5, 5', 
+                    opacity: 0.8
+                }).bindPopup(`Jalur Kabel ODP: ${odp.name} ➡️ Pelanggan: ${customer.name}`);
+                cablesLayer.addLayer(polyline);
+            }
+        }
+    });
+
+    cablesLayer.addTo(map);
+
     function showOdps() {
         map.addLayer(odpMarkers);
     }
 
     function showCustomers() {
         map.addLayer(customerMarkers);
+    }
+
+    function toggleCables() {
+        if (map.hasLayer(cablesLayer)) {
+            map.removeLayer(cablesLayer);
+        } else {
+            map.addLayer(cablesLayer);
+        }
     }
 </script>
 @endsection
