@@ -16,10 +16,19 @@ class Customer extends Model
         'phone',
         'email',
         'address',
+        'latitude',
+        'longitude',
         'package_id',
         'status',
         'join_date',
     ];
+
+    protected $appends = ['odp_id'];
+
+    public function getOdpIdAttribute()
+    {
+        return $this->cableRoutes()->latest()->first()->odp_id ?? null;
+    }
 
     protected $casts = [
         'join_date' => 'datetime',
