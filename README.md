@@ -264,14 +264,22 @@ Akses aplikasi di: `http://localhost:8000`
 
 ---
 
-## 🔑 Akun Demo
+## 🔑 Akun Demo & Portal Akses
 
-| Role | Email/Username | Password |
-|------|----------------|----------|
-| **Administrator** | `admin@gembok.com` | `admin123` |
-| **Customer** | `pppoe-ahmad` atau `081299887766` | `ahmad123` |
+Sistem Gembok Lara memiliki beberapa portal terpisah untuk peran yang berbeda. Berikut adalah URL login beserta akun demo untuk masing-masing portal:
 
-> Customer dapat login menggunakan: PPPoE username, username, nomor HP, atau email
+| Portal | URL Login | Email/Username | Password | Fungsi Utama |
+|--------|-----------|----------------|----------|--------------|
+| **Admin** | `/login` atau `/admin/login` | `admin@gembok.com` | `admin123` | Mengelola seluruh sistem (Customer, Keuangan, Jaringan, Voucher, dll) |
+| **Customer** | `/customer/login` | `pppoe-ahmad` atau `081299887766` | `ahmad123` | Portal pelanggan untuk melihat tagihan, membayar invoice, & buat tiket CS |
+| **Technician** | `/technician/login` | `asep.tech@gembok.com` | `password` | Portal teknisi untuk melihat map jaringan ODP, rute kabel pelanggan, & jadwal instalasi/perbaikan |
+| **Agent** | `/agent/login` | `agen.budi` | `password` | Portal khusus agen voucher untuk melakukan penjualan retail voucher hotspot |
+| **Collector** | `/collector/login` | `kolektor.anto` | `password` | Portal khusus penagih/kolektor untuk update status pembayaran tunai pelanggan |
+
+> **Note**:
+> - Customer dapat login menggunakan *PPPoE username*, *username*, *nomor HP*, atau *email*.
+> - Installer/Teknisi bisa menggunakan username atau alamat emailnya.
+> - Default password untuk entitas yang dibuat dari menu admin (seperti teknisi/agen/kolektor) adalah `password`.
 
 ---
 
