@@ -48,11 +48,13 @@ class TechnicianController extends Controller
 
         $validated['is_active'] = true;
         $validated['join_date'] = now();
+        $validated['password'] = \Illuminate\Support\Facades\Hash::make('password');
+        $validated['username'] = $request->email ? explode('@', $request->email)[0] : strtolower(str_replace(' ', '', $request->name));
 
         \App\Models\Technician::create($validated);
 
         return redirect()->route('admin.technicians.index')
-            ->with('success', 'Technician created successfully!');
+            ->with('success', 'Technician created successfully! Default password is: password');
     }
 
     public function show(\App\Models\Technician $technician)

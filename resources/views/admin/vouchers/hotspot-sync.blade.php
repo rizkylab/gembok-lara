@@ -14,6 +14,18 @@
                 </a>
                 <h1 class="text-3xl font-bold text-gray-900">Sync Hotspot with Mikrotik</h1>
                 <p class="text-gray-600 mt-1">2-way sync profiles and vouchers between Gembok and Mikrotik</p>
+
+                <div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start">
+                    <i class="fas fa-info-circle text-blue-500 mt-0.5 mr-3 text-lg"></i>
+                    <div>
+                        <h4 class="text-sm font-semibold text-blue-800">Panduan Fitur (Pull vs Push)</h4>
+                        <ul class="text-sm text-blue-700 mt-1 list-disc list-inside space-y-1">
+                            <li><strong>⬇️ Pull:</strong> Menarik data voucher/profile yang ada di Router Mikrotik ke dalam Database Lokal web ini (Gembok). Gunakan ini jika Anda membuat data langsung di Winbox/Mikrotik.</li>
+                            <li><strong>⬆️ Push:</strong> Mengirim data voucher/profile yang ada di Database Lokal web ini ke Router Mikrotik (agar pelanggan bisa login di jaringan).</li>
+                            <li><strong>🔄 Full Sync:</strong> Melakukan keduanya secara bersamaan (Pull lalu Push).</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Stats -->

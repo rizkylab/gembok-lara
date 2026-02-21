@@ -19,7 +19,9 @@ class TechnicianController extends Controller
             'password' => 'required',
         ]);
 
-        $technician = Technician::where('username', $request->username)->first();
+        $technician = Technician::where('username', $request->username)
+                                ->orWhere('email', $request->username)
+                                ->first();
 
         if ($technician && Hash::check($request->password, $technician->password)) {
             Auth::loginUsingId($technician->user_id ?? $technician->id);
@@ -27,7 +29,7 @@ class TechnicianController extends Controller
             return redirect()->route('technician.dashboard');
         }
 
-        return back()->with('error', 'Username atau password salah');
+        return back()->with('error', 'Username/Email atau password salah');
     }
 
     public function logout()

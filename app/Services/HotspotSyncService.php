@@ -335,6 +335,7 @@ class HotspotSyncService
      */
     public function generateVouchers(array $options): array
     {
+        set_time_limit(0); // Prevent timeout during Mikrotik sync
         $result = ['created' => 0, 'failed' => 0, 'vouchers' => [], 'errors' => []];
 
         $quantity = $options['quantity'] ?? 1;
