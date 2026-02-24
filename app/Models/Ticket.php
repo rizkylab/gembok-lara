@@ -43,7 +43,7 @@ class Ticket extends Model
 
     public function assignedTo()
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(Technician::class, 'assigned_to');
     }
 
     public function replies()

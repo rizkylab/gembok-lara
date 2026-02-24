@@ -66,12 +66,12 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Assign To</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Assign To Technician</label>
                         <select name="assigned_to" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-cyan-500">
                             <option value="">Unassigned</option>
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}" {{ old('assigned_to') == $user->id ? 'selected' : '' }}>
-                                {{ $user->name }}
+                            @foreach($technicians as $technician)
+                            <option value="{{ $technician->id }}" {{ old('assigned_to') == $technician->id ? 'selected' : '' }}>
+                                {{ $technician->name }} - {{ $technician->phone }}
                             </option>
                             @endforeach
                         </select>

@@ -134,15 +134,15 @@
                             </div>
                             
                             <div>
-                                <label class="text-sm text-gray-500">Assigned To</label>
+                                <label class="text-sm text-gray-500">Assigned To Technician</label>
                                 <form action="{{ route('admin.tickets.assign', $ticket) }}" method="POST" class="mt-1">
                                     @csrf
                                     <select name="assigned_to" onchange="this.form.submit()" 
                                         class="w-full px-3 py-2 border rounded-lg text-sm">
                                         <option value="">Unassigned</option>
-                                        @foreach($users as $user)
-                                        <option value="{{ $user->id }}" {{ $ticket->assigned_to == $user->id ? 'selected' : '' }}>
-                                            {{ $user->name }}
+                                        @foreach($technicians as $technician)
+                                        <option value="{{ $technician->id }}" {{ $ticket->assigned_to == $technician->id ? 'selected' : '' }}>
+                                            {{ $technician->name }} - {{ $technician->phone }}
                                         </option>
                                         @endforeach
                                     </select>

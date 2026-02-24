@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ticket;
 use App\Models\TicketReply;
 use App\Models\Customer;
-use App\Models\User;
+use App\Models\Technician;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,8 +52,8 @@ class TicketController extends Controller
     public function create()
     {
         $customers = Customer::orderBy('name')->get();
-        $users = User::orderBy('name')->get();
-        return view('admin.tickets.create', compact('customers', 'users'));
+        $technicians = Technician::where('is_active', true)->orderBy('name')->get();
+        return view('admin.tickets.create', compact('customers', 'technicians'));
     }
 
     public function store(Request $request)
@@ -64,7 +64,7 @@ class TicketController extends Controller
             'description' => 'required|string',
             'category' => 'required|in:billing,technical,installation,complaint,inquiry,other',
             'priority' => 'required|in:low,medium,high,urgent',
-            'assigned_to' => 'nullable|exists:users,id',
+            'assigned_to' => 'nullable|exists:technicians,id',
         ]);
 
         $ticket = Ticket::create($validated);
@@ -76,8 +76,8 @@ class TicketController extends Controller
     public function show(Ticket $ticket)
     {
         $ticket->load(['customer', 'assignedTo', 'replies.user', 'replies.customer', 'attachments']);
-        $users = User::orderBy('name')->get();
-        return view('admin.tickets.show', compact('ticket', 'users'));
+        $technicians = Technician::where('is_active', true)->orderBy('name')->get();
+        return view('admin.tickets.show', compact('ticket', 'technicians'));
     }
 
     public function reply(Request $request, Ticket $ticket)
@@ -108,7 +108,7 @@ class TicketController extends Controller
     public function assign(Request $request, Ticket $ticket)
     {
         $validated = $request->validate([
-            'assigned_to' => 'nullable|exists:users,id',
+            'assigned_to' => 'nullable|exists:technicians,id',
         ]);
 
         $ticket->update($validated);
