@@ -9,7 +9,7 @@
         "php": "^8.2",
         "evilfreelancer/routeros-api-php": "^1.6",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^3.0.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
